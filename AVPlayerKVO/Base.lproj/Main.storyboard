@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,58 +21,69 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-Hz-CEb">
-                                <rect key="frame" x="37" y="59" width="300" height="169"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nVF-Hz-CEb" secondAttribute="height" multiplier="16:9" id="zDI-vy-FYH"/>
                                 </constraints>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1ly-M6-eNm">
-                                <rect key="frame" x="35" y="236" width="304" height="31"/>
                                 <connections>
                                     <action selector="positionSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OeS-tp-hLM"/>
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.25" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="cD4-Np-Xoz">
-                                <rect key="frame" x="35" y="301" width="154" height="31"/>
                                 <connections>
                                     <action selector="rateChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="GGu-GV-77y"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9j-cV-S5e">
-                                <rect key="frame" x="37" y="276" width="35" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6O-cK-MpY">
-                                <rect key="frame" x="307" y="301" width="30" height="30"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="playPausePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jfn-Iw-k81"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3L-MZ-Bfd">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMS-9l-xgH">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9j-cV-S5e">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="E6O-cK-MpY" firstAttribute="trailing" secondItem="nVF-Hz-CEb" secondAttribute="trailing" id="4mn-BM-dF1"/>
-                            <constraint firstItem="cD4-Np-Xoz" firstAttribute="top" secondItem="nVF-Hz-CEb" secondAttribute="bottom" constant="73" id="By4-si-Ov4"/>
                             <constraint firstItem="cD4-Np-Xoz" firstAttribute="width" secondItem="nVF-Hz-CEb" secondAttribute="width" multiplier="0.5" id="HmT-uO-USe"/>
                             <constraint firstItem="cD4-Np-Xoz" firstAttribute="leading" secondItem="nVF-Hz-CEb" secondAttribute="leading" id="JUl-RM-rcH"/>
                             <constraint firstItem="nVF-Hz-CEb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="39" id="QbN-FE-ZjU"/>
                             <constraint firstItem="1ly-M6-eNm" firstAttribute="top" secondItem="nVF-Hz-CEb" secondAttribute="bottom" constant="8" id="Xiz-rI-VtE"/>
-                            <constraint firstItem="E6O-cK-MpY" firstAttribute="bottom" secondItem="cD4-Np-Xoz" secondAttribute="bottom" id="gOM-Xh-l20"/>
+                            <constraint firstItem="N3L-MZ-Bfd" firstAttribute="top" secondItem="1ly-M6-eNm" secondAttribute="bottom" constant="8" id="ZfG-vW-ily"/>
+                            <constraint firstItem="ZMS-9l-xgH" firstAttribute="leading" secondItem="N3L-MZ-Bfd" secondAttribute="trailing" constant="8" id="ZhU-hF-A2q"/>
+                            <constraint firstItem="cD4-Np-Xoz" firstAttribute="top" secondItem="T9j-cV-S5e" secondAttribute="bottom" constant="8" id="bNz-F5-VzL"/>
+                            <constraint firstItem="E6O-cK-MpY" firstAttribute="top" secondItem="ZMS-9l-xgH" secondAttribute="bottom" id="bZN-du-p5M"/>
+                            <constraint firstItem="N3L-MZ-Bfd" firstAttribute="leading" secondItem="nVF-Hz-CEb" secondAttribute="leading" id="dha-nL-PoB"/>
+                            <constraint firstItem="T9j-cV-S5e" firstAttribute="top" secondItem="N3L-MZ-Bfd" secondAttribute="bottom" constant="40" id="gX1-qa-deW"/>
                             <constraint firstItem="1ly-M6-eNm" firstAttribute="width" secondItem="nVF-Hz-CEb" secondAttribute="width" id="hlB-1n-lBG"/>
                             <constraint firstItem="T9j-cV-S5e" firstAttribute="leading" secondItem="cD4-Np-Xoz" secondAttribute="leading" id="mKg-y3-FrR"/>
                             <constraint firstItem="1ly-M6-eNm" firstAttribute="leading" secondItem="nVF-Hz-CEb" secondAttribute="leading" id="nAP-MJ-dTP"/>
-                            <constraint firstItem="cD4-Np-Xoz" firstAttribute="top" secondItem="T9j-cV-S5e" secondAttribute="bottom" constant="4" id="pGc-Vt-ob4"/>
+                            <constraint firstItem="ZMS-9l-xgH" firstAttribute="top" secondItem="1ly-M6-eNm" secondAttribute="bottom" constant="8" id="oeU-UV-tfv"/>
                             <constraint firstItem="nVF-Hz-CEb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="pan-ac-QrX"/>
                             <constraint firstItem="nVF-Hz-CEb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ul8-ia-Pdo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentTimeLabel" destination="N3L-MZ-Bfd" id="D82-Oj-t6J"/>
                         <outlet property="playPauseButton" destination="E6O-cK-MpY" id="BWm-vZ-vKW"/>
                         <outlet property="positionSlider" destination="1ly-M6-eNm" id="0OK-18-jMa"/>
+                        <outlet property="totalTimeLabel" destination="ZMS-9l-xgH" id="IAd-TM-Hy6"/>
                         <outlet property="videoContainer" destination="nVF-Hz-CEb" id="tPh-Fs-BpL"/>
                     </connections>
                 </viewController>

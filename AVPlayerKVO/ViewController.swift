@@ -27,12 +27,13 @@ class ViewController: UIViewController {
             
             if let item = newValue.currentItem {
                 item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: .new, context: &kvoContext)
-                item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.loadedTimeRanges), options: .new, context: &kvoContext)            }
+                item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.loadedTimeRanges), options: .new, context: &kvoContext)
+            }
             
             let timeInterval = CMTime(value: 1, timescale: 2)
             self.timeObserverToken = newValue.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main, using: { (time: CMTime) in
                 print(time)
-                self.updatePositionSlider()
+                self.updatePositionSliderAndLabels()
             })
         }
     }
@@ -44,9 +45,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var videoContainer: UIView!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var positionSlider: UISlider!
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var totalTimeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loadAssetFromFile(urlString: "debussy.mp3")
         
         if let url = URL(string: "https://archive.org/download/VoyagetothePlanetofPrehistoricWomen/VoyagetothePlanetofPrehistoricWomen.mp4") {
@@ -71,11 +75,13 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Utility
-    func updatePositionSlider() {
+    func updatePositionSliderAndLabels() {
         guard let item = player.currentItem else { return }
         
         let currentPlace = Float(item.currentTime().seconds / item.duration.seconds)
         self.positionSlider.value = currentPlace
+        self.currentTimeLabel.text = String(describing: item.currentTime().seconds)
+        
     }
     
     func loadAssetFromFile(urlString: String) {
@@ -85,11 +91,11 @@ class ViewController: UIViewController {
         if let fileURL = Bundle.main.url(forResource: fileParts.resource, withExtension: fileParts.extension) {
             let asset = AVURLAsset(url: fileURL)
             let playerItem = AVPlayerItem(asset: asset)
-
+            
             self.player = AVPlayer(playerItem: playerItem)
         }
     }
-
+    
     // MARK: - KVO
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let keyPath = keyPath else {
@@ -97,17 +103,17 @@ class ViewController: UIViewController {
         }
         if context == &kvoContext {
             if let item = object as? AVPlayerItem {
-            switch keyPath {
-            case #keyPath(AVPlayerItem.status):
-                if item.status == .readyToPlay {
-                    playPauseButton.isEnabled = true
-                }
-            case #keyPath(AVPlayerItem.loadedTimeRanges):
-                for range in item.loadedTimeRanges {
-                    print(range.timeRangeValue)
-                }
-            default:
-                break
+                switch keyPath {
+                case #keyPath(AVPlayerItem.status):
+                    if item.status == .readyToPlay {
+                        playPauseButton.isEnabled = true
+                    }
+                case #keyPath(AVPlayerItem.loadedTimeRanges):
+                    for range in item.loadedTimeRanges {
+                        print(range.timeRangeValue)
+                    }
+                default:
+                    break
                 }
             }
         }
@@ -116,7 +122,7 @@ class ViewController: UIViewController {
     // MARK: - Actions
     @IBAction func positionSliderChanged(_ sender: UISlider) {
         guard let item = player.currentItem else { return }
-
+        
         let newPosition = Double(sender.value) * item.duration.seconds
         
         player.seek(to: CMTime(seconds: newPosition, preferredTimescale: 1000))
@@ -140,7 +146,6 @@ class ViewController: UIViewController {
             player.rate = userPlayRate
         }
         //print("NEW rate: \(player.rate).")
-
     }
     
     @IBAction func playPausePressed(_ sender: UIButton) {
